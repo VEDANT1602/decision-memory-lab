@@ -1,0 +1,628 @@
+[
+  {
+    "case": "latest-explicit-version",
+    "expected_status": "ready",
+    "baseline": {
+      "status": "ready",
+      "ids": [
+        "noise-15",
+        "noise-16",
+        "noise-17",
+        "noise-18",
+        "noise-19"
+      ],
+      "bytes": 1284,
+      "pass": false
+    },
+    "validity_recent": {
+      "status": "ready",
+      "ids": [
+        "noise-15",
+        "noise-16",
+        "noise-17",
+        "noise-18",
+        "noise-19"
+      ],
+      "bytes": 1284,
+      "pass": false
+    },
+    "guarded": {
+      "status": "ready",
+      "reason": "required_facts_preserved",
+      "ids": [
+        "expiry",
+        "injection",
+        "launch",
+        "rollback-v2",
+        "unicode"
+      ],
+      "bytes": 1277,
+      "pass": true,
+      "diagnostics": {
+        "withheld": {
+          "approval": "withdrawn",
+          "budget_rule": "unreviewed",
+          "max_batch": "source_changed",
+          "region_limit": "unresolved_versions"
+        },
+        "required_keys": [
+          "rollback_target"
+        ],
+        "budget_bytes": 1400,
+        "measure": "serialized UTF-8 bytes",
+        "used_bytes": 1277
+      }
+    }
+  },
+  {
+    "case": "historical-before-new-version",
+    "expected_status": "ready",
+    "baseline": {
+      "status": "ready",
+      "ids": [
+        "changed-old",
+        "draft-old",
+        "rollback-v1",
+        "withdrawn-old"
+      ],
+      "bytes": 965,
+      "pass": true
+    },
+    "validity_recent": {
+      "status": "ready",
+      "ids": [
+        "changed-old",
+        "draft-old",
+        "rollback-v1",
+        "withdrawn-old"
+      ],
+      "bytes": 965,
+      "pass": true
+    },
+    "guarded": {
+      "status": "ready",
+      "reason": "required_facts_preserved",
+      "ids": [
+        "changed-old",
+        "draft-old",
+        "rollback-v1",
+        "withdrawn-old"
+      ],
+      "bytes": 965,
+      "pass": true,
+      "diagnostics": {
+        "withheld": {},
+        "required_keys": [
+          "rollback_target"
+        ],
+        "budget_bytes": 1400,
+        "measure": "serialized UTF-8 bytes",
+        "used_bytes": 965
+      }
+    }
+  },
+  {
+    "case": "mandatory-low-recency",
+    "expected_status": "ready",
+    "baseline": {
+      "status": "ready",
+      "ids": [
+        "noise-17",
+        "noise-18",
+        "noise-19"
+      ],
+      "bytes": 824,
+      "pass": false
+    },
+    "validity_recent": {
+      "status": "ready",
+      "ids": [
+        "noise-17",
+        "noise-18",
+        "noise-19"
+      ],
+      "bytes": 824,
+      "pass": false
+    },
+    "guarded": {
+      "status": "ready",
+      "reason": "required_facts_preserved",
+      "ids": [
+        "launch",
+        "rollback-v2",
+        "unicode"
+      ],
+      "bytes": 793,
+      "pass": true,
+      "diagnostics": {
+        "withheld": {
+          "approval": "withdrawn",
+          "budget_rule": "unreviewed",
+          "max_batch": "source_changed",
+          "region_limit": "unresolved_versions"
+        },
+        "required_keys": [
+          "release_state",
+          "rollback_target"
+        ],
+        "budget_bytes": 1000,
+        "measure": "serialized UTF-8 bytes",
+        "used_bytes": 793
+      }
+    }
+  },
+  {
+    "case": "expired-required",
+    "expected_status": "refused",
+    "baseline": {
+      "status": "ready",
+      "ids": [
+        "noise-15",
+        "noise-16",
+        "noise-17",
+        "noise-18",
+        "noise-19"
+      ],
+      "bytes": 1284,
+      "pass": false
+    },
+    "validity_recent": {
+      "status": "refused",
+      "ids": [],
+      "bytes": 0,
+      "pass": true
+    },
+    "guarded": {
+      "status": "refused",
+      "reason": "required_fact_unavailable",
+      "ids": [],
+      "bytes": 0,
+      "pass": true,
+      "diagnostics": {
+        "withheld": {
+          "approval": "withdrawn",
+          "budget_rule": "unreviewed",
+          "max_batch": "source_changed",
+          "region_limit": "unresolved_versions",
+          "temporary_capacity": "expired"
+        },
+        "required_keys": [
+          "temporary_capacity"
+        ],
+        "budget_bytes": 1400,
+        "measure": "serialized UTF-8 bytes",
+        "missing_keys": [
+          "temporary_capacity"
+        ]
+      }
+    }
+  },
+  {
+    "case": "conflicting-required",
+    "expected_status": "refused",
+    "baseline": {
+      "status": "ready",
+      "ids": [
+        "noise-15",
+        "noise-16",
+        "noise-17",
+        "noise-18",
+        "noise-19"
+      ],
+      "bytes": 1284,
+      "pass": false
+    },
+    "validity_recent": {
+      "status": "refused",
+      "ids": [],
+      "bytes": 0,
+      "pass": true
+    },
+    "guarded": {
+      "status": "refused",
+      "reason": "required_fact_unavailable",
+      "ids": [],
+      "bytes": 0,
+      "pass": true,
+      "diagnostics": {
+        "withheld": {
+          "approval": "withdrawn",
+          "budget_rule": "unreviewed",
+          "max_batch": "source_changed",
+          "region_limit": "unresolved_versions"
+        },
+        "required_keys": [
+          "region_limit"
+        ],
+        "budget_bytes": 1400,
+        "measure": "serialized UTF-8 bytes",
+        "missing_keys": [
+          "region_limit"
+        ]
+      }
+    }
+  },
+  {
+    "case": "withdrawal-no-resurrection",
+    "expected_status": "refused",
+    "baseline": {
+      "status": "ready",
+      "ids": [
+        "noise-15",
+        "noise-16",
+        "noise-17",
+        "noise-18",
+        "noise-19"
+      ],
+      "bytes": 1284,
+      "pass": false
+    },
+    "validity_recent": {
+      "status": "refused",
+      "ids": [],
+      "bytes": 0,
+      "pass": true
+    },
+    "guarded": {
+      "status": "refused",
+      "reason": "required_fact_unavailable",
+      "ids": [],
+      "bytes": 0,
+      "pass": true,
+      "diagnostics": {
+        "withheld": {
+          "approval": "withdrawn",
+          "budget_rule": "unreviewed",
+          "max_batch": "source_changed",
+          "region_limit": "unresolved_versions"
+        },
+        "required_keys": [
+          "approval"
+        ],
+        "budget_bytes": 1400,
+        "measure": "serialized UTF-8 bytes",
+        "missing_keys": [
+          "approval"
+        ]
+      }
+    }
+  },
+  {
+    "case": "draft-no-resurrection",
+    "expected_status": "refused",
+    "baseline": {
+      "status": "ready",
+      "ids": [
+        "noise-15",
+        "noise-16",
+        "noise-17",
+        "noise-18",
+        "noise-19"
+      ],
+      "bytes": 1284,
+      "pass": false
+    },
+    "validity_recent": {
+      "status": "refused",
+      "ids": [],
+      "bytes": 0,
+      "pass": true
+    },
+    "guarded": {
+      "status": "refused",
+      "reason": "required_fact_unavailable",
+      "ids": [],
+      "bytes": 0,
+      "pass": true,
+      "diagnostics": {
+        "withheld": {
+          "approval": "withdrawn",
+          "budget_rule": "unreviewed",
+          "max_batch": "source_changed",
+          "region_limit": "unresolved_versions"
+        },
+        "required_keys": [
+          "budget_rule"
+        ],
+        "budget_bytes": 1400,
+        "measure": "serialized UTF-8 bytes",
+        "missing_keys": [
+          "budget_rule"
+        ]
+      }
+    }
+  },
+  {
+    "case": "changed-source-no-resurrection",
+    "expected_status": "refused",
+    "baseline": {
+      "status": "ready",
+      "ids": [
+        "noise-15",
+        "noise-16",
+        "noise-17",
+        "noise-18",
+        "noise-19"
+      ],
+      "bytes": 1284,
+      "pass": false
+    },
+    "validity_recent": {
+      "status": "refused",
+      "ids": [],
+      "bytes": 0,
+      "pass": true
+    },
+    "guarded": {
+      "status": "refused",
+      "reason": "required_fact_unavailable",
+      "ids": [],
+      "bytes": 0,
+      "pass": true,
+      "diagnostics": {
+        "withheld": {
+          "approval": "withdrawn",
+          "budget_rule": "unreviewed",
+          "max_batch": "source_changed",
+          "region_limit": "unresolved_versions"
+        },
+        "required_keys": [
+          "max_batch"
+        ],
+        "budget_bytes": 1400,
+        "measure": "serialized UTF-8 bytes",
+        "missing_keys": [
+          "max_batch"
+        ]
+      }
+    }
+  },
+  {
+    "case": "budget-too-small",
+    "expected_status": "refused",
+    "baseline": {
+      "status": "ready",
+      "ids": [
+        "noise-19"
+      ],
+      "bytes": 364,
+      "pass": false
+    },
+    "validity_recent": {
+      "status": "refused",
+      "ids": [],
+      "bytes": 0,
+      "pass": true
+    },
+    "guarded": {
+      "status": "refused",
+      "reason": "required_facts_exceed_budget",
+      "ids": [],
+      "bytes": 0,
+      "pass": true,
+      "diagnostics": {
+        "withheld": {
+          "approval": "withdrawn",
+          "budget_rule": "unreviewed",
+          "max_batch": "source_changed",
+          "region_limit": "unresolved_versions"
+        },
+        "required_keys": [
+          "release_state",
+          "rollback_target"
+        ],
+        "budget_bytes": 400,
+        "measure": "serialized UTF-8 bytes"
+      }
+    }
+  },
+  {
+    "case": "unicode-byte-budget",
+    "expected_status": "ready",
+    "baseline": {
+      "status": "ready",
+      "ids": [
+        "noise-18",
+        "noise-19"
+      ],
+      "bytes": 594,
+      "pass": false
+    },
+    "validity_recent": {
+      "status": "ready",
+      "ids": [
+        "noise-18",
+        "noise-19"
+      ],
+      "bytes": 594,
+      "pass": false
+    },
+    "guarded": {
+      "status": "ready",
+      "reason": "required_facts_preserved",
+      "ids": [
+        "launch",
+        "unicode"
+      ],
+      "bytes": 581,
+      "pass": true,
+      "diagnostics": {
+        "withheld": {
+          "approval": "withdrawn",
+          "budget_rule": "unreviewed",
+          "max_batch": "source_changed",
+          "region_limit": "unresolved_versions"
+        },
+        "required_keys": [
+          "language_note"
+        ],
+        "budget_bytes": 700,
+        "measure": "serialized UTF-8 bytes",
+        "used_bytes": 581
+      }
+    }
+  },
+  {
+    "case": "no-authority-from-text",
+    "expected_status": "ready",
+    "baseline": {
+      "status": "ready",
+      "ids": [
+        "changed-new",
+        "noise-18",
+        "noise-19"
+      ],
+      "bytes": 800,
+      "pass": false
+    },
+    "validity_recent": {
+      "status": "ready",
+      "ids": [
+        "noise-18",
+        "noise-19"
+      ],
+      "bytes": 594,
+      "pass": false
+    },
+    "guarded": {
+      "status": "ready",
+      "reason": "required_facts_preserved",
+      "ids": [
+        "injection",
+        "launch"
+      ],
+      "bytes": 621,
+      "pass": true,
+      "diagnostics": {
+        "withheld": {
+          "approval": "withdrawn",
+          "budget_rule": "unreviewed",
+          "max_batch": "source_changed",
+          "region_limit": "unresolved_versions"
+        },
+        "required_keys": [
+          "external_note"
+        ],
+        "budget_bytes": 800,
+        "measure": "serialized UTF-8 bytes",
+        "used_bytes": 621
+      }
+    }
+  },
+  {
+    "case": "missing-required",
+    "expected_status": "refused",
+    "baseline": {
+      "status": "ready",
+      "ids": [
+        "noise-15",
+        "noise-16",
+        "noise-17",
+        "noise-18",
+        "noise-19"
+      ],
+      "bytes": 1284,
+      "pass": false
+    },
+    "validity_recent": {
+      "status": "refused",
+      "ids": [],
+      "bytes": 0,
+      "pass": true
+    },
+    "guarded": {
+      "status": "refused",
+      "reason": "required_fact_unavailable",
+      "ids": [],
+      "bytes": 0,
+      "pass": true,
+      "diagnostics": {
+        "withheld": {
+          "approval": "withdrawn",
+          "budget_rule": "unreviewed",
+          "max_batch": "source_changed",
+          "region_limit": "unresolved_versions"
+        },
+        "required_keys": [
+          "unknown_fact"
+        ],
+        "budget_bytes": 1400,
+        "measure": "serialized UTF-8 bytes",
+        "missing_keys": [
+          "unknown_fact"
+        ]
+      }
+    }
+  },
+  {
+    "case": "cross-tenant-key",
+    "expected_status": "refused",
+    "baseline": {
+      "status": "ready",
+      "ids": [
+        "noise-15",
+        "noise-16",
+        "noise-17",
+        "noise-18",
+        "noise-19"
+      ],
+      "bytes": 1284,
+      "pass": false
+    },
+    "validity_recent": {
+      "status": "refused",
+      "ids": [],
+      "bytes": 0,
+      "pass": true
+    },
+    "guarded": {
+      "status": "refused",
+      "reason": "required_fact_unavailable",
+      "ids": [],
+      "bytes": 0,
+      "pass": true,
+      "diagnostics": {
+        "withheld": {
+          "approval": "withdrawn",
+          "budget_rule": "unreviewed",
+          "max_batch": "source_changed",
+          "region_limit": "unresolved_versions"
+        },
+        "required_keys": [
+          "private_route"
+        ],
+        "budget_bytes": 1400,
+        "measure": "serialized UTF-8 bytes",
+        "missing_keys": [
+          "private_route"
+        ]
+      }
+    }
+  },
+  {
+    "case": "unauthorized-tenant",
+    "expected_status": "denied",
+    "baseline": {
+      "status": "ready",
+      "ids": [
+        "beta"
+      ],
+      "bytes": 346,
+      "pass": false
+    },
+    "validity_recent": {
+      "status": "denied",
+      "ids": [],
+      "bytes": 0,
+      "pass": true
+    },
+    "guarded": {
+      "status": "denied",
+      "reason": "tenant_not_authorized",
+      "ids": [],
+      "bytes": 0,
+      "pass": true,
+      "diagnostics": {}
+    }
+  }
+]

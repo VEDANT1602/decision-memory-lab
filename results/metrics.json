@@ -1,0 +1,12 @@
+{
+  "cases": 14,
+  "baseline_passes": 1,
+  "validity_recent_passes": 10,
+  "guarded_passes": 14,
+  "ready": 5,
+  "refused": 8,
+  "denied": 1,
+  "dataset_sha256": "ddd4f4c22da087fdfad2b26d2ca48dd9e857685eab2664aa02d8d8c20fc986f1",
+  "cases_sha256": "9a519fde769044bd852e95e61fbec3d4f4d129c5fe3360041900ddb5ce4c5181",
+  "interpretation": "Authored protocol contracts, not LLM answer quality or an adversarial security assessment."
+}

@@ -1,0 +1,183 @@
+[
+  {
+    "id": "latest-explicit-version",
+    "tenant": "grocer-a",
+    "as_of": 300,
+    "required_keys": [
+      "rollback_target"
+    ],
+    "query": "release rollback decision",
+    "budget_bytes": 1400,
+    "expected_status": "ready",
+    "expected_required_ids": [
+      "rollback-v2"
+    ]
+  },
+  {
+    "id": "historical-before-new-version",
+    "tenant": "grocer-a",
+    "as_of": 70,
+    "required_keys": [
+      "rollback_target"
+    ],
+    "query": "release rollback decision",
+    "budget_bytes": 1400,
+    "expected_status": "ready",
+    "expected_required_ids": [
+      "rollback-v1"
+    ]
+  },
+  {
+    "id": "mandatory-low-recency",
+    "tenant": "grocer-a",
+    "as_of": 300,
+    "required_keys": [
+      "rollback_target",
+      "release_state"
+    ],
+    "query": "release rollback decision",
+    "budget_bytes": 1000,
+    "expected_status": "ready",
+    "expected_required_ids": [
+      "rollback-v2",
+      "launch"
+    ]
+  },
+  {
+    "id": "expired-required",
+    "tenant": "grocer-a",
+    "as_of": 500,
+    "required_keys": [
+      "temporary_capacity"
+    ],
+    "query": "release rollback decision",
+    "budget_bytes": 1400,
+    "expected_status": "refused",
+    "expected_required_ids": []
+  },
+  {
+    "id": "conflicting-required",
+    "tenant": "grocer-a",
+    "as_of": 300,
+    "required_keys": [
+      "region_limit"
+    ],
+    "query": "release rollback decision",
+    "budget_bytes": 1400,
+    "expected_status": "refused",
+    "expected_required_ids": []
+  },
+  {
+    "id": "withdrawal-no-resurrection",
+    "tenant": "grocer-a",
+    "as_of": 300,
+    "required_keys": [
+      "approval"
+    ],
+    "query": "release rollback decision",
+    "budget_bytes": 1400,
+    "expected_status": "refused",
+    "expected_required_ids": []
+  },
+  {
+    "id": "draft-no-resurrection",
+    "tenant": "grocer-a",
+    "as_of": 300,
+    "required_keys": [
+      "budget_rule"
+    ],
+    "query": "release rollback decision",
+    "budget_bytes": 1400,
+    "expected_status": "refused",
+    "expected_required_ids": []
+  },
+  {
+    "id": "changed-source-no-resurrection",
+    "tenant": "grocer-a",
+    "as_of": 300,
+    "required_keys": [
+      "max_batch"
+    ],
+    "query": "release rollback decision",
+    "budget_bytes": 1400,
+    "expected_status": "refused",
+    "expected_required_ids": []
+  },
+  {
+    "id": "budget-too-small",
+    "tenant": "grocer-a",
+    "as_of": 300,
+    "required_keys": [
+      "rollback_target",
+      "release_state"
+    ],
+    "query": "release rollback decision",
+    "budget_bytes": 400,
+    "expected_status": "refused",
+    "expected_required_ids": []
+  },
+  {
+    "id": "unicode-byte-budget",
+    "tenant": "grocer-a",
+    "as_of": 300,
+    "required_keys": [
+      "language_note"
+    ],
+    "query": "release rollback decision",
+    "budget_bytes": 700,
+    "expected_status": "ready",
+    "expected_required_ids": [
+      "unicode"
+    ]
+  },
+  {
+    "id": "no-authority-from-text",
+    "tenant": "grocer-a",
+    "as_of": 300,
+    "required_keys": [
+      "external_note"
+    ],
+    "query": "release rollback decision",
+    "budget_bytes": 800,
+    "expected_status": "ready",
+    "expected_required_ids": [
+      "injection"
+    ]
+  },
+  {
+    "id": "missing-required",
+    "tenant": "grocer-a",
+    "as_of": 300,
+    "required_keys": [
+      "unknown_fact"
+    ],
+    "query": "release rollback decision",
+    "budget_bytes": 1400,
+    "expected_status": "refused",
+    "expected_required_ids": []
+  },
+  {
+    "id": "cross-tenant-key",
+    "tenant": "grocer-a",
+    "as_of": 300,
+    "required_keys": [
+      "private_route"
+    ],
+    "query": "release rollback decision",
+    "budget_bytes": 1400,
+    "expected_status": "refused",
+    "expected_required_ids": []
+  },
+  {
+    "id": "unauthorized-tenant",
+    "tenant": "grocer-b",
+    "as_of": 300,
+    "required_keys": [
+      "private_route"
+    ],
+    "query": "release rollback decision",
+    "budget_bytes": 1400,
+    "expected_status": "denied",
+    "expected_required_ids": []
+  }
+]
