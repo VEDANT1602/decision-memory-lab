@@ -2,7 +2,7 @@
 
 An agent resuming a grocery-planning job needs the rollback version and the launch status. Both can sit several updates back in the history. This Python ledger tracks revisions and source digests and reserves bytes for required facts before filling the remaining context.
 
-On 14 hand-written cases, recent-first passed one, the validity-aware version passed ten and the guarded packer passed all fourteen. The interesting cases are the four the stronger baseline missed. [Case-by-case comparison](results/case-results.json) · [Example handoff](results/example-context.json)
+On 14 fixed handoff cases, recent-first passed one, the validity-aware version passed ten and the guarded packer passed all fourteen. The interesting cases are the four the stronger baseline missed. [Case-by-case comparison](results/case-results.json) · [Example handoff](results/example-context.json)
 
 ## Which facts survive a handoff?
 
