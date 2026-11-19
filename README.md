@@ -1,18 +1,16 @@
 # Decision Memory Lab
 
-**An agent handoff should preserve the decision that matters, along with the evidence that still supports it.**
+An agent resuming a grocery-planning job needs the rollback version and the launch status. Both can sit several updates back in the history. This Python ledger tracks revisions and source digests and reserves bytes for required facts before filling the remaining context.
 
-This independent portfolio experiment by Vedant Thaker builds a small, inspectable memory ledger and a bounded context packer in Python. It keeps explicit revisions, withholds unresolved claims, and reserves space for required facts before ranking optional context. Everything runs locally with the standard library.
+On 14 hand-written cases, recent-first passed one, the validity-aware version passed ten and the guarded packer passed all fourteen. The interesting cases are the four the stronger baseline missed. [Case-by-case comparison](results/case-results.json) · [Example handoff](results/example-context.json)
 
-## The problem I chose
-
-An agent resumes a grocery-planning investigation. The newest notes are routine status updates. The facts that matter are older: which version to roll back to, and whether launch is still pending. A recent-first context window can spend its entire budget on the wrong information.
+## Which facts survive a handoff?
 
 Relevance is only part of the problem. A remembered approval may have been withdrawn. A source may have changed. Two records may disagree. Squeezing these records into a smaller prompt does not resolve those conditions.
 
 My decision was to validate the current record first, reserve required facts second, and rank optional context last.
 
-## The framework
+## Ledger and packing rules
 
 ```mermaid
 flowchart LR
